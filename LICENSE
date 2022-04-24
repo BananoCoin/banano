@@ -1,4 +1,4 @@
-License for Code owned by Colin LeMahieu and NanoLabs, Inc.
+License for Software owned by Colin LeMahieu and NanoLabs, Inc.
 
 Copyright 2014-2020 Colin LeMahieu and NanoLabs, Inc.
 
@@ -12,7 +12,7 @@ Redistribution and use in source and binary forms, with or without modification,
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-Licesnse for Pull Request (BananoCoin/banano) #28
+Licesnse for Software involved in Pull Request (BananoCoin/banano) #28
 
 * Unauthorized usage of this Pull Request outside of github repository @BananoCoin/banano, via any medium is strictly prohibited
 * The code may be downloaded for intention of hosting a Banano Node or performing a security audit. Any other intetion is not authorized.
