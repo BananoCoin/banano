@@ -107,7 +107,7 @@ void nano::port_mapping::refresh_mapping ()
 		for (auto & protocol : protocols | boost::adaptors::filtered ([] (auto const & p) { return p.enabled; }))
 		{
 			auto upnp_description = std::string ("Banano Node (") + node.network_params.network.get_current_network_as_string () + ")";
-			auto add_port_mapping_error_l (UPNP_AddPortMapping (upnp.urls.controlURL, upnp.data.first.servicetype, config_port_l.c_str (), node_port_l.c_str (), address.to_string ().c_str (), upnp_description.c_str (), protocol.name, nullptr, std::to_string (node.network_params.portmapping.lease_duration.count ()).c_str ()));
+			auto add_port_mapping_error_l (UPNP_AddPortMapping (upnp.urls.controlURL, upnp.data.first.servicetype, config_port_l.c_str (), node_port_l.c_str (), address.to_string ().c_str (), upnp_description.c_str (), protocol.name, protocol.external_address.to_string ().c_str (), std::to_string (node.network_params.portmapping.lease_duration.count ()).c_str ()));
 
 			if (add_port_mapping_error_l == UPNPCOMMAND_SUCCESS)
 			{
@@ -139,7 +139,7 @@ bool nano::port_mapping::check_lost_or_old_mapping ()
 		std::array<char, 6> int_port_l;
 		std::array<char, 16> remaining_mapping_duration_l;
 		remaining_mapping_duration_l.fill (0);
-		auto verify_port_mapping_error_l (UPNP_GetSpecificPortMappingEntry (upnp.urls.controlURL, upnp.data.first.servicetype, config_port_l.c_str (), protocol.name, nullptr, int_client_l.data (), int_port_l.data (), nullptr, nullptr, remaining_mapping_duration_l.data ()));
+		auto verify_port_mapping_error_l (UPNP_GetSpecificPortMappingEntry (upnp.urls.controlURL, upnp.data.first.servicetype, config_port_l.c_str (), protocol.name, protocol.external_address.to_string ().c_str (), int_client_l.data (), int_port_l.data (), nullptr, nullptr, remaining_mapping_duration_l.data ()));
 		auto remaining_from_port_mapping = std::atoi (remaining_mapping_duration_l.data ());
 		auto lease_duration = node.network_params.portmapping.lease_duration.count ();
 		auto lease_duration_divided_by_two = (lease_duration / 2);
