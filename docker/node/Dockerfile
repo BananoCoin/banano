@@ -13,11 +13,11 @@ RUN \
 cmake /tmp/src \
 -DCI_BUILD=${CI_BUILD} \
 -DPORTABLE=1 \
--DACTIVE_NETWORK=nano_${NETWORK}_network \
+-DACTIVE_NETWORK=banano_${NETWORK}_network \
 -DNANO_POW_SERVER=ON -DNANO_SHARED_BOOST=ON && \
 make bananode -j $(nproc) && \
 make banano_rpc -j $(nproc) && \
-make nano_pow_server -j $(nproc) && \
+# make nano_pow_server -j $(nproc) && \
 cd .. && \
 echo ${NETWORK} >/etc/nano-network
 
@@ -28,7 +28,7 @@ RUN groupadd --gid 1000 nanocurrency && \
 
 COPY --from=0 /tmp/build/bananode /usr/bin
 COPY --from=0 /tmp/build/banano_rpc /usr/bin
-COPY --from=0 /tmp/build/nano_pow_server /usr/bin
+# COPY --from=0 /tmp/build/nano_pow_server /usr/bin
 COPY --from=0 /tmp/src/api/ /usr/bin/api/
 COPY --from=0 /etc/nano-network /etc
 COPY docker/node/entry.sh /usr/bin/entry.sh
