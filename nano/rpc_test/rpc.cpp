@@ -2852,7 +2852,7 @@ TEST (rpc, accounts_balances)
 
 	// Adds a valid account string that isn't on the ledger for getting an error response.
 	boost::property_tree::ptree entry2;
-	auto const account_not_found = "bano_1os6txqxyuesnxrtshnfb5or1hesc1647wpk9rsr84pmki6eairwha79hk3j";
+	auto const account_not_found = "ban_1os6txqxyuesnxrtshnfb5or1hesc1647wpk9rsr84pmki6eairwha79hk3j";
 	entry2.put ("", account_not_found);
 	accounts_l.push_back (std::make_pair ("", entry2));
 
