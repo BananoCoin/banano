@@ -37,6 +37,44 @@ For more information, see [Banano.cc](https://banano.cc).
 ### Build instructions
 - [Building Banano from source](https://github.com/BananoCoin/banano/wiki/Building-a-Bananode-from-sources)
 
+### Building with CMake
+
+When building Banano with CMake, you can configure which network to build for using the `ACTIVE_NETWORK` option:
+
+```bash
+cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+      -DACTIVE_NETWORK=banano_live_network \
+      -DNANO_TEST=ON .
+```
+
+**Valid `ACTIVE_NETWORK` values:**
+
+| Network | Description |
+|---------|-------------|
+| `banano_dev_network` | Development network with low work parameters and publicly known genesis key |
+| `banano_beta_network` | Beta network with normal work parameters and secret beta genesis key |
+| `banano_live_network` | **Default.** Live production network with normal work parameters |
+| `banano_test_network` | Test network with normal work parameters and secret test genesis key |
+
+If you don't specify `ACTIVE_NETWORK`, it defaults to `banano_live_network`.
+
+**Common build configurations:**
+
+```bash
+# Production build (default)
+cmake -DCMAKE_BUILD_TYPE=Release .
+
+# Development build with tests
+cmake -DCMAKE_BUILD_TYPE=Debug \
+      -DACTIVE_NETWORK=banano_dev_network \
+      -DNANO_TEST=ON .
+
+# Test network build
+cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+      -DACTIVE_NETWORK=banano_test_network \
+      -DNANO_TEST=ON .
+```
+
 ### Running a Docker node
 - [Running a Docker node](https://github.com/BananoCoin/banano/wiki/Running-a-Docker-Bananode)
 
