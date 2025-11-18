@@ -221,6 +221,12 @@ void nano::rep_crawler::cleanup ()
 {
 	debug_assert (!mutex.try_lock ());
 
+	// TEMPORARY FIX for V25.1 -> V28.2 upgrade compatibility:
+	// Don't aggressively evict reps with dead channels during upgrade period
+	// V25.1 nodes may have behavioral differences causing temporary channel death
+	// By keeping the rep entry, crawler can reconnect on next query cycle
+
+	/* Original code - evict reps with dead channels (restore after upgrade complete)
 	// Evict reps with dead channels
 	erase_if (reps, [this] (rep_entry const & rep) {
 		if (!rep.channel->alive ())
@@ -231,6 +237,7 @@ void nano::rep_crawler::cleanup ()
 		}
 		return false;
 	});
+	*/
 
 	// Evict queries that haven't been responded to in a while
 	erase_if (queries, [this] (query_entry const & query) {
