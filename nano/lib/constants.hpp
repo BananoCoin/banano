@@ -282,9 +282,9 @@ public:
 	/** Current protocol version */
 	uint8_t const protocol_version = 0x15;
 	/** Minimum accepted protocol version */
-	uint8_t const protocol_version_min = 0x11;  // Temporarily lowered for V25.1 compatibility during upgrade
+	uint8_t const protocol_version_min = 0x0F;  // Temporarily lowered to 15 for V25.1 compatibility (was 0x12/18)
 
 	/** Minimum accepted protocol version used when bootstrapping */
-	uint8_t const bootstrap_protocol_version_min = 0x11;  // Temporarily lowered for V25.1 compatibility during upgrade
+	uint8_t const bootstrap_protocol_version_min = 0x0F;  // Temporarily lowered to 15 for V25.1 compatibility (was 0x12/18)
 };
 }
