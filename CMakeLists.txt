@@ -159,25 +159,6 @@ set(ACTIVE_NETWORK
 set_property(
   CACHE ACTIVE_NETWORK PROPERTY STRINGS banano_dev_network banano_beta_network
                                 banano_live_network banano_test_network)
-
-# Validate ACTIVE_NETWORK value
-set(VALID_NETWORKS
-    "banano_dev_network;banano_beta_network;banano_live_network;banano_test_network"
-)
-if(NOT ACTIVE_NETWORK IN_LIST VALID_NETWORKS)
-  message(
-    FATAL_ERROR
-      "Invalid ACTIVE_NETWORK value: '${ACTIVE_NETWORK}'\n"
-      "Valid options are:\n"
-      "  - banano_dev_network   (Development network with low work parameters)\n"
-      "  - banano_beta_network  (Beta network for testing)\n"
-      "  - banano_live_network  (Live production network - default)\n"
-      "  - banano_test_network  (Test network)\n"
-      "\n"
-      "Example usage:\n"
-      "  cmake -DACTIVE_NETWORK=banano_test_network .")
-endif()
-
 set(CPACK_PACKAGE_NAME
     "nano-node"
     CACHE STRING "" FORCE)
