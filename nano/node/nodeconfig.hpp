@@ -61,7 +61,7 @@ public:
 	nano::amount rep_crawler_weight_minimum{ "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF" };
 	std::chrono::milliseconds vote_generator_delay{ std::chrono::milliseconds (100) };
 	unsigned vote_generator_threshold{ 3 };
-	nano::amount online_weight_minimum{ 60000 * nano::MBAN_ratio };
+	nano::amount online_weight_minimum{ 900 * nano::MBAN_ratio };
 	unsigned password_fanout{ 1024 };
 	unsigned io_threads{ std::max (4u, nano::hardware_concurrency ()) };
 	unsigned network_threads{ std::max (4u, nano::hardware_concurrency ()) };
