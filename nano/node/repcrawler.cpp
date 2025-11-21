@@ -221,6 +221,12 @@ void nano::rep_crawler::cleanup ()
 {
 	debug_assert (!mutex.try_lock ());
 
+	// TEMPORARY FIX for V25.1 -> V28.2 upgrade compatibility:
+	// Don't aggressively evict reps with dead channels during upgrade period
+	// V25.1 nodes may have behavioral differences causing temporary channel death
+	// By keeping the rep entry, crawler can reconnect on next query cycle
+
+	/* Original code - evict reps with dead channels (restore after upgrade complete)
 	// Evict reps with dead channels
 	erase_if (reps, [this] (rep_entry const & rep) {
 		if (!rep.channel->alive ())
@@ -231,6 +237,7 @@ void nano::rep_crawler::cleanup ()
 		}
 		return false;
 	});
+	*/
 
 	// Evict queries that haven't been responded to in a while
 	erase_if (queries, [this] (query_entry const & query) {
@@ -293,6 +300,13 @@ std::deque<std::shared_ptr<nano::transport::channel>> nano::rep_crawler::prepare
 
 auto nano::rep_crawler::prepare_query_target () const -> hash_root_t
 {
+	// TEMPORARY FIX for V25.1 -> V28.2 upgrade compatibility:
+	// Always query genesis block to ensure V25.1 nodes can respond
+	// V25.1 nodes may not have recent confirmed blocks that V28.2 has,
+	// causing them to not respond and be marked as dead channels
+	return std::make_pair (node.network_params.ledger.genesis->hash (), node.network_params.ledger.genesis->root ());
+
+	/* Original code - query random blocks (restore after upgrade complete)
 	constexpr int max_attempts = 32;
 
 	auto transaction = node.ledger.tx_begin_read ();
@@ -317,6 +331,7 @@ auto nano::rep_crawler::prepare_query_target () const -> hash_root_t
 
 	// If no suitable block was found, query genesis
 	return std::make_pair (node.network_params.ledger.genesis->hash (), node.network_params.ledger.genesis->root ());
+	*/
 }
 
 bool nano::rep_crawler::track_rep_request (hash_root_t hash_root, std::shared_ptr<nano::transport::channel> const & channel)

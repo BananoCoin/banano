@@ -317,6 +317,9 @@ if(NANO_WARN_TO_ERR)
   add_compile_options(-Werror -Wno-deprecated-declarations)
 endif()
 
+# Suppress deprecated declarations globally (needed for RocksDB compatibility)
+add_compile_options(-Wno-deprecated-declarations)
+
 if(WIN32)
   find_library(PSAPI Psapi)
   add_definitions(-D_WIN32_WINNT=0x0600 -DWINVER=0x0600 -DMINIUPNP_STATICLIB

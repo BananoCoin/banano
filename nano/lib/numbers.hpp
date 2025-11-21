@@ -5,6 +5,7 @@
 #include <boost/functional/hash_fwd.hpp>
 #include <boost/multiprecision/cpp_int.hpp>
 
+#include <algorithm>
 #include <array>
 #include <compare>
 #include <limits>
