@@ -97,7 +97,7 @@ nano::public_key const & nano::public_key::null ()
 
 std::string nano::public_key::to_node_id () const
 {
-	return to_account ().replace (0, 4, "node");
+	return to_account ().replace (0, 4, "node_");
 }
 
 bool nano::public_key::decode_node_id (std::string const & source_a)
