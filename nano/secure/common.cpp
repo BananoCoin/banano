@@ -74,9 +74,9 @@ std::shared_ptr<nano::block> parse_block_from_genesis_data (std::string const & 
 	return nano::deserialize_block_json (tree);
 }
 
-char const * beta_canary_public_key_data = "B61453D27E843EB30B8288E37D5E7C64447F9202E589AB9E573DA4460DF7B21B"; // ban_3finchb9x33ype7r7495hoh9rs46hyb17sebogh7ghf6ar8zheiucm87mfha
-char const * live_canary_public_key_data = "B61453D27E843EB30B8288E37D5E7C64447F9202E589AB9E573DA4460DF7B21B"; // ban_3finchb9x33ype7r7495hoh9rs46hyb17sebogh7ghf6ar8zheiucm87mfha
-std::string const test_canary_public_key_data = nano::get_env_or_default ("NANO_TEST_CANARY_PUB", "B61453D27E843EB30B8288E37D5E7C64447F9202E589AB9E573DA4460DF7B21B"); // ban_3finchb9x33ype7r7495hoh9rs46hyb17sebogh7ghf6ar8zheiucm87mfha
+char const * beta_canary_public_key_data = "57C5B843274BAE9D10A8751791CD86FE341A28D8854B642D3111787F9A765E7F"; // ban_1oy7q33kgkxgmnacixaqk98rfzjn5anfj3cdeipm46drhyf9eqmze8pi9e7e
+char const * live_canary_public_key_data = "57C5B843274BAE9D10A8751791CD86FE341A28D8854B642D3111787F9A765E7F"; // ban_1oy7q33kgkxgmnacixaqk98rfzjn5anfj3cdeipm46drhyf9eqmze8pi9e7e
+std::string const test_canary_public_key_data = nano::get_env_or_default ("NANO_TEST_CANARY_PUB", "57C5B843274BAE9D10A8751791CD86FE341A28D8854B642D3111787F9A765E7F"); // ban_1oy7q33kgkxgmnacixaqk98rfzjn5anfj3cdeipm46drhyf9eqmze8pi9e7e
 }
 
 nano::keypair nano::dev::genesis_key{ dev_private_key_data };
